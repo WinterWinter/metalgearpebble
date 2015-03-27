@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html>
+  <head>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="http://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.css">
+<script src="http://code.jquery.com/jquery-1.11.2.min.js"></script>
+<script src="http://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.js"></script>
+    <title>Metal Gear Pebble</title>
+  </head>
+  <body>
+
+<div data-role="page">
+  <div data-role="header"  data-theme="b">
+  <h1>Scale Select</h1>
+  </div>
+
+
+  <div data-role="main" class="ui-content">
+    <form method="post" action="demoform.asp">
+      <fieldset class="ui-field-contain">
+
+<p>Hero 1
+<select id="scale">
+<option value="Celsius">Celsius</option>
+<option value="Fahrenheit">Fahrenheit</option>
+   </select>
+</p>
+
+<br>
+    <p>
+<fieldset class="ui-grid-a">
+<div class="ui-block-a"><button type="submit" data-theme="d" id="b-cancel">Cancel</button></div>
+<div class="ui-block-b"><button type="submit" data-theme="b" id="save_button">Save</button></div>
+</fieldset>
+   </p>
+
+    <script>
+	
+       //Cancel Button function
+       $("#b-cancel").click(function() {
+            console.log("Cancel");
+            document.location = "pebblejs://close";
+        });
+      //Setup to allow easy adding more options later
+      function saveOptions() {
+        var Scale = document.getElementById("hero_select_1");
+        
+        var options = {
+          "scale": Scale.options[Scale.selectedIndex].value,
+        }
+        
+        return options;
+      };
+      var submitButton = document.getElementById("save_button");
+      submitButton.addEventListener("click", 
+        function() {
+          console.log("Submit");
+          var options = saveOptions();
+          var location = "pebblejs://close#" + encodeURIComponent(JSON.stringify(options));
+          
+          document.location = location;
+        }, 
+      false);
+    </script>
+  </body>
+</html>
