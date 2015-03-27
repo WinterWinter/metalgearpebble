@@ -1,3 +1,32 @@
+Pebble.addEventListener("showConfiguration",
+  function(e) {
+    //Load the remote config page
+    Pebble.openURL("http://winterwinter.github.io/metalgearpebble/");
+  }
+);
+
+Pebble.addEventListener("webviewclosed",
+  function(e) {
+    //Get JSON dictionary
+    var tempScale = JSON.parse(decodeURIComponent(e.response));
+    console.log("Configuration window returned: " + JSON.stringify(tempScale));
+    
+    var dictionary = {
+      "KEY_SCALE" : tempScale.scale,
+       };
+
+    //Send to Pebble, persist there
+    Pebble.sendAppMessage(dictionary,
+      function(e) {
+        console.log("Sending settings data...");
+      },
+      function(e) {
+        console.log("Settings feedback failed!");
+      }
+    );
+  }
+);
+
 var xhrRequest = function (url, type, callback) {
   var xhr = new XMLHttpRequest();
   xhr.onload = function () {
@@ -19,7 +48,7 @@ function locationSuccess(pos) {
       var json = JSON.parse(text);
 
       // Temperature in Kelvin requires adjustment
-      var temperature = Math.round(json.main.temp - 273.15)*1.8 + 32;
+      var temperature = Math.round(json.main.temp);
       console.log("Temperature is " + temperature);
 
       // Conditions

@@ -1,10 +1,12 @@
 {
     "appKeys": {
         "KEY_CONDITIONS": 2,
+        "KEY_SCALE": 3,
         "KEY_TEMPERATURE": 1
     },
     "capabilities": [
-        "location"
+        "location",
+        "configurable"
     ],
     "companyName": "WintersWatches",
     "longName": "Metal Gear Pebble",
@@ -131,7 +133,7 @@
     "shortName": "Metal Gear Pebble",
     "uuid": "2b88ac31-fd0c-49a9-9297-234e03e3b075",
     "versionCode": 10,
-    "versionLabel": "2.7",
+    "versionLabel": "2.8",
     "watchapp": {
         "watchface": true
     }

@@ -2,6 +2,8 @@
    
 #define KEY_TEMPERATURE 1
 #define KEY_CONDITIONS 2
+#define KEY_SCALE 3
+#define KEY_TEST 4
 
 static Window *window;
 
@@ -352,18 +354,47 @@ static void inbox_received_callback(DictionaryIterator *iterator, void *context)
   // Read first item
   Tuple *t = dict_read_first(iterator);
 
+  int temperature;
+  int Kelvin = persist_read_int(KEY_TEMPERATURE);
+  int finalTemp = Kelvin;
+  int test = persist_read_int(KEY_TEST);
+    
   // For all items
   while(t != NULL) {
     // Which key was received?
     switch(t->key) {
+    case KEY_SCALE:
+      if(strcmp(t->value->cstring, "F") == 0){
+        persist_write_int(KEY_TEST, 0);
+        DictionaryIterator *iter;
+        app_message_outbox_begin(&iter);
+        dict_write_uint8(iter, 0, 0);
+        app_message_outbox_send();
+      }
+      else if(strcmp(t->value->cstring, "C") == 0){
+        persist_write_int(KEY_TEST, 1);
+        DictionaryIterator *iter;
+        app_message_outbox_begin(&iter);
+        dict_write_uint8(iter, 0, 0);
+        app_message_outbox_send();
+      }
+      break;
     case KEY_TEMPERATURE:
-      snprintf(temperature_buffer, sizeof(temperature_buffer), "%dF", (int)t->value->int32 /*insert formula*/);
+      if(test == 0){
+      temperature = (int)t->value->int32;
+      persist_write_int(KEY_TEMPERATURE, temperature);
+      finalTemp = (Kelvin - 273.15) * 1.8 + 32;
+      snprintf(temperature_buffer, sizeof(temperature_buffer), "%dF", finalTemp);
+      }
+      else if(test == 1){
+      temperature = (int)t->value->int32;
+      persist_write_int(KEY_TEMPERATURE, temperature);
+      finalTemp = Kelvin - 273.15;
+      snprintf(temperature_buffer, sizeof(temperature_buffer), "%dC", finalTemp);
+      }
       break;
     case KEY_CONDITIONS:
       snprintf(conditions_buffer, sizeof(conditions_buffer), "%s", t->value->cstring);
-      break;
-    default:
-      APP_LOG(APP_LOG_LEVEL_ERROR, "Key %d not recognized!", (int)t->key);
       break;
     }
 
@@ -464,4 +495,3 @@ int main(void) {
   app_event_loop();
   deinit();
 }
-
