@@ -383,12 +383,14 @@ static void inbox_received_callback(DictionaryIterator *iterator, void *context)
       if(test == 0){
       temperature = (int)t->value->int32;
       persist_write_int(KEY_TEMPERATURE, temperature);
+      Kelvin = persist_read_int(KEY_TEMPERATURE);
       finalTemp = (Kelvin - 273.15) * 1.8 + 32;
       snprintf(temperature_buffer, sizeof(temperature_buffer), "%dF", finalTemp);
       }
       else if(test == 1){
       temperature = (int)t->value->int32;
       persist_write_int(KEY_TEMPERATURE, temperature);
+      Kelvin = persist_read_int(KEY_TEMPERATURE);
       finalTemp = Kelvin - 273.15;
       snprintf(temperature_buffer, sizeof(temperature_buffer), "%dC", finalTemp);
       }
