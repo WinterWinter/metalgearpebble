@@ -132,7 +132,7 @@
     "sdkVersion": "2",
     "shortName": "Metal Gear Pebble",
     "uuid": "2b88ac31-fd0c-49a9-9297-234e03e3b075",
-    "versionCode": 12,
+    "versionCode": 13,
     "versionLabel": "2.9",
     "watchapp": {
         "watchface": true
