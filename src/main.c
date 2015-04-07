@@ -451,7 +451,7 @@ for (int i = 0; i < TOTAL_mug_amount; ++i) {
 }
   handle_bluetooth(bluetooth_connection_service_peek());
   
-  //Create Bluetooth layer
+  //Create Battery layer
  	for (int i = 0; i < TOTAL_CODEC; ++i) {
    	codec_layers[i] = bitmap_layer_create(dummy_frame);
    	layer_add_child(window_layer, bitmap_layer_get_layer(codec_layers[i]));

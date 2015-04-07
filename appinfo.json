@@ -14,107 +14,8 @@
     "resources": {
         "media": [
             {
-                "file": "images/Menu.png",
-                "menuIcon": true,
-                "name": "MENU",
-                "type": "png"
-            },
-            {
-                "file": "fonts/OldSansBlack.ttf",
-                "name": "Weather_20",
-                "type": "font"
-            },
-            {
-                "file": "fonts/MGS2.ttf",
-                "name": "FONT_TIME_40",
-                "trackingAdjust": 5,
-                "type": "font"
-            },
-            {
-                "file": "images/Chris.png",
-                "name": "CHRIS",
-                "type": "png"
-            },
-            {
-                "file": "images/Viper.png",
-                "name": "VIPER",
-                "type": "png"
-            },
-            {
-                "file": "images/Pyro.png",
-                "name": "PYRO",
-                "type": "png"
-            },
-            {
-                "file": "images/Owl.png",
-                "name": "OWL",
-                "type": "png"
-            },
-            {
-                "file": "images/Mei Ling.png",
-                "name": "LING",
-                "type": "png"
-            },
-            {
-                "file": "images/Jimmy.png",
-                "name": "JIMMY",
-                "type": "png"
-            },
-            {
-                "file": "images/Weasel.png",
-                "name": "WEASEL",
-                "type": "png"
-            },
-            {
-                "file": "images/Mcbride.png",
-                "name": "MCBRIDE",
-                "type": "png"
-            },
-            {
-                "file": "images/Hawk.png",
-                "name": "HAWK",
-                "type": "png"
-            },
-            {
-                "file": "images/General.png",
-                "name": "GENERAL",
-                "type": "png"
-            },
-            {
-                "file": "images/Campbell.png",
-                "name": "CAMPBELL",
-                "type": "png"
-            },
-            {
-                "file": "fonts/digital-7.ttf",
-                "name": "DIGITAL_20",
-                "trackingAdjust": 1,
-                "type": "font"
-            },
-            {
-                "file": "fonts/digital-7.ttf",
-                "name": "DIGITAL_17",
-                "trackingAdjust": 1,
-                "type": "font"
-            },
-            {
-                "file": "images/Deepthroat.png",
-                "name": "DEEPTHROAT_BLUETOOTH",
-                "type": "png-trans"
-            },
-            {
-                "file": "images/Codec2.png",
-                "name": "Codec2",
-                "type": "png-trans"
-            },
-            {
-                "file": "images/Codec4.png",
-                "name": "Codec4",
-                "type": "png-trans"
-            },
-            {
-                "file": "images/Codec6.png",
-                "name": "Codec6",
+                "file": "images/Codec8.png",
+                "name": "Codec8",
                 "type": "png-trans"
             },
             {
@@ -123,17 +24,116 @@
                 "type": "png"
             },
             {
-                "file": "images/Codec8.png",
-                "name": "Codec8",
+                "file": "images/Codec6.png",
+                "name": "Codec6",
                 "type": "png-trans"
+            },
+            {
+                "file": "images/Codec4.png",
+                "name": "Codec4",
+                "type": "png-trans"
+            },
+            {
+                "file": "images/Codec2.png",
+                "name": "Codec2",
+                "type": "png-trans"
+            },
+            {
+                "file": "images/Deepthroat.png",
+                "name": "DEEPTHROAT_BLUETOOTH",
+                "type": "png-trans"
+            },
+            {
+                "file": "fonts/digital-7.ttf",
+                "name": "DIGITAL_17",
+                "trackingAdjust": 1,
+                "type": "font"
+            },
+            {
+                "file": "fonts/digital-7.ttf",
+                "name": "DIGITAL_20",
+                "trackingAdjust": 1,
+                "type": "font"
+            },
+            {
+                "file": "images/Campbell.png",
+                "name": "CAMPBELL",
+                "type": "png"
+            },
+            {
+                "file": "images/General.png",
+                "name": "GENERAL",
+                "type": "png"
+            },
+            {
+                "file": "images/Hawk.png",
+                "name": "HAWK",
+                "type": "png"
+            },
+            {
+                "file": "images/Mcbride.png",
+                "name": "MCBRIDE",
+                "type": "png"
+            },
+            {
+                "file": "images/Weasel.png",
+                "name": "WEASEL",
+                "type": "png"
+            },
+            {
+                "file": "images/Jimmy.png",
+                "name": "JIMMY",
+                "type": "png"
+            },
+            {
+                "file": "images/Mei Ling.png",
+                "name": "LING",
+                "type": "png"
+            },
+            {
+                "file": "images/Owl.png",
+                "name": "OWL",
+                "type": "png"
+            },
+            {
+                "file": "images/Pyro.png",
+                "name": "PYRO",
+                "type": "png"
+            },
+            {
+                "file": "images/Viper.png",
+                "name": "VIPER",
+                "type": "png"
+            },
+            {
+                "file": "images/Chris.png",
+                "name": "CHRIS",
+                "type": "png"
+            },
+            {
+                "file": "fonts/MGS2.ttf",
+                "name": "FONT_TIME_40",
+                "trackingAdjust": 5,
+                "type": "font"
+            },
+            {
+                "file": "fonts/OldSansBlack.ttf",
+                "name": "Weather_20",
+                "type": "font"
+            },
+            {
+                "file": "images/Menu.png",
+                "menuIcon": true,
+                "name": "MENU",
+                "type": "png"
             }
         ]
     },
     "sdkVersion": "2",
     "shortName": "Metal Gear Pebble",
     "uuid": "2b88ac31-fd0c-49a9-9297-234e03e3b075",
-    "versionCode": 11,
-    "versionLabel": "2.8",
+    "versionCode": 12,
+    "versionLabel": "2.9",
     "watchapp": {
         "watchface": true
     }
