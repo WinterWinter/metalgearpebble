@@ -50,13 +50,10 @@ const int CODEC_IMAGE_RESOURCE_IDS[] = {
   RESOURCE_ID_Codec8_WHITE
 };
 
+const int BT_IMAGE_RESOURCE_IDS[] = {
+  RESOURCE_ID_DEEPTHROAT_BLUETOOTH
+};
 
-
-const int BT_WHITE_IMAGE_RESOURCE_IDS[] = {
-  RESOURCE_ID_DEEPTHROAT_BLUETOOTH_WHITE};
-
-const int BT_BLACK_IMAGE_RESOURCE_IDS[] = {
- 	RESOURCE_ID_DEEPTHROAT_BLUETOOTH_BLACK};
 
 #define TOTAL_mug_amount 2
 static GBitmap *mug_amount_images[TOTAL_mug_amount];
@@ -78,8 +75,13 @@ GBitmap *old_image = *bmp_image;
  	*bmp_image = gbitmap_create_with_resource(resource_id);
  	GRect frame = (GRect) {
    	.origin = origin,
-   	.size = (*bmp_image)->bounds.size
-    //.size = gbitmap_get_bounds(*bmp_image).size
+    
+#ifdef PBL_COLOR
+    .size = gbitmap_get_bounds(*bmp_image).size 
+#else
+     .size = (*bmp_image)->bounds.size 
+#endif
+    
       
 };
  	bitmap_layer_set_bitmap(bmp_layer, *bmp_image);
@@ -111,21 +113,13 @@ else {
 // If started in disconnection display Deepthroat, no vibration
 if (initiate_watchface) {
   layer_set_hidden(bitmap_layer_get_layer(bt_digits_layers[0]), false);
-bitmap_layer_set_compositing_mode(bt_digits_layers[0], GCompOpOr);
-set_container_image(&bt_digits_images[0], bt_digits_layers[0], BT_WHITE_IMAGE_RESOURCE_IDS[0], GPoint(4, 40));
-  layer_set_hidden(bitmap_layer_get_layer(bt_digits_layers[1]), false);
-    bitmap_layer_set_compositing_mode(bt_digits_layers[1], GCompOpClear);
-set_container_image(&bt_digits_images[1], bt_digits_layers[1], BT_BLACK_IMAGE_RESOURCE_IDS[0], GPoint(4, 40));
+set_container_image(&bt_digits_images[0], bt_digits_layers[0], BT_IMAGE_RESOURCE_IDS[0], GPoint(4, 40));
 }
   
 // On disconnection display Deepthroat and vibrate three times
 else {
-  layer_set_hidden(bitmap_layer_get_layer(bt_digits_layers[0]), false);
-bitmap_layer_set_compositing_mode(bt_digits_layers[0], GCompOpOr);
-set_container_image(&bt_digits_images[0], bt_digits_layers[0], BT_WHITE_IMAGE_RESOURCE_IDS[0], GPoint(4, 40));
-  layer_set_hidden(bitmap_layer_get_layer(bt_digits_layers[1]), false);
-    bitmap_layer_set_compositing_mode(bt_digits_layers[1], GCompOpClear);
-set_container_image(&bt_digits_images[1], bt_digits_layers[1], BT_BLACK_IMAGE_RESOURCE_IDS[0], GPoint(4, 40));
+layer_set_hidden(bitmap_layer_get_layer(bt_digits_layers[0]), false);
+set_container_image(&bt_digits_images[0], bt_digits_layers[0], BT_IMAGE_RESOURCE_IDS[0], GPoint(4, 40));
 
 vibes_enqueue_custom_pattern( (VibePattern) {
    	.durations = (uint32_t []) {100, 100, 100, 100, 100},
@@ -226,7 +220,7 @@ static void main_window_load(Window *window) {
   Layer *window_layer = window_get_root_layer(window);
   
   //Create GBitmap, then set to created BitmapLayer
-  background_image = gbitmap_create_with_resource(RESOURCE_ID_NEW_BACKGROUND);
+  background_image = gbitmap_create_with_resource(RESOURCE_ID_BACKGROUND);
   background_layer = bitmap_layer_create(GRect(0, 0, 144, 168));
   bitmap_layer_set_bitmap(background_layer, background_image);
   layer_add_child(window_get_root_layer(window), bitmap_layer_get_layer(background_layer));
